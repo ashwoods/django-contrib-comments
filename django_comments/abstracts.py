@@ -30,7 +30,7 @@ class BaseCommentAbstractModel(models.Model):
     content_object = GenericForeignKey(ct_field="content_type", fk_field="object_pk")
 
     # Metadata about the comment
-    site = models.ForeignKey(Site, on_delete=models.CASCADE)
+    site = models.ForeignKey(Site, on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
         abstract = True

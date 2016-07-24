@@ -136,6 +136,7 @@ class CommentDetailsForm(CommentSecurityForm):
         custom comment apps that override get_comment_model can override this
         method to add extra fields onto a custom comment model.
         """
+
         return dict(
             content_type=ContentType.objects.get_for_model(self.target_object),
             object_pk=force_text(self.target_object._get_pk_val()),
@@ -144,7 +145,6 @@ class CommentDetailsForm(CommentSecurityForm):
             user_url=self.cleaned_data["url"],
             comment=self.cleaned_data["comment"],
             submit_date=timezone.now(),
-            site_id=settings.SITE_ID,
             is_public=True,
             is_removed=False,
         )
